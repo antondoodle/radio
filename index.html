@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🎧 Bachata Radio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .visits {
+      font-size: 0.9em;
+      margin-top: 10px;
+      color: #aaa;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 60%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Включено Bachata Радио</h1>
+  <iframe src="https://myradio24.org/bachatahit" allow="autoplay"></iframe>
+  <div class="visits">Вы заходили <span id="count">0</span> раз(а)</div>
+
+  <script>
+    const countKey = "radio_visit_count";
+    const count = localStorage.getItem(countKey) || 0;
+    const newCount = parseInt(count) + 1;
+    localStorage.setItem(countKey, newCount);
+    document.getElementById("count").textContent = newCount;
+  </script>
+</body>
+</html>
