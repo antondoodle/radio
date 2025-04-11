@@ -1,0 +1,25 @@
+from pyrogram import Client, filters
+from pyrogram.types import ReplyKeyboardMarkup, KeyboardButton, Message, WebAppInfo
+
+API_ID = 28060184
+API_HASH = "c59f40d20ca7a9a3180d4017edbe2f15"
+BOT_TOKEN = "7957162464:AAE8fmci0VRWJL4ZSpiopus3CpOfSRbc-jw"
+
+WEB_APP_URL = "https://antondoodle.github.io/radio/"
+
+app = Client("webapp_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
+@app.on_message(filters.command("start"))
+async def start(client: Client, message: Message):
+    keyboard = ReplyKeyboardMarkup(
+        [[
+            KeyboardButton(
+                text="🎵 Открыть радио",
+                web_app=WebAppInfo(url=WEB_APP_URL)
+            )
+        ]],
+        resize_keyboard=True
+    )
+    await message.reply("Привет! Жми кнопку ниже, чтобы слушать радио 🎧", reply_markup=keyboard)
+
+app.run()
